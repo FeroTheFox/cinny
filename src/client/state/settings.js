@@ -3,7 +3,7 @@ import EventEmitter from 'events';
 import appDispatcher from '../dispatcher';
 
 import cons from './cons';
-import { darkTheme, butterTheme, silverTheme } from '../../colors.css';
+import { darkTheme, butterTheme, silverTheme, amoledTheme } from '../../colors.css';
 
 function getSettings() {
   const settings = localStorage.getItem('settings');
@@ -22,8 +22,8 @@ class Settings extends EventEmitter {
   constructor() {
     super();
 
-    this.themeClasses = [lightTheme, silverTheme, darkTheme, butterTheme];
-    this.themes = ['', 'silver-theme', 'dark-theme', 'butter-theme'];
+    this.themeClasses = [lightTheme, silverTheme, darkTheme, butterTheme, amoledTheme];
+    this.themes = ['', 'silver-theme', 'dark-theme', 'butter-theme', 'amoled-theme'];
     this.themeIndex = this.getThemeIndex();
 
     this.useSystemTheme = this.getUseSystemTheme();
@@ -36,9 +36,10 @@ class Settings extends EventEmitter {
 
     this.darkModeQueryList = window.matchMedia('(prefers-color-scheme: dark)');
 
-    this.darkModeQueryList.addEventListener('change', () => this.applyTheme())
+    this.darkModeQueryList.addEventListener('change', () => this.applyTheme());
 
-    this.isTouchScreenDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+    this.isTouchScreenDevice =
+      'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
   }
 
   getThemeIndex() {
@@ -66,7 +67,7 @@ class Settings extends EventEmitter {
     this._clearTheme();
     const autoThemeIndex = this.darkModeQueryList.matches ? 2 : 0;
     const themeIndex = this.useSystemTheme ? autoThemeIndex : this.themeIndex;
-    if (this.themes[themeIndex] === undefined) return
+    if (this.themes[themeIndex] === undefined) return;
     if (this.themes[themeIndex]) document.body.classList.add(this.themes[themeIndex]);
     document.body.classList.add(this.themeClasses[themeIndex]);
   }

@@ -236,3 +236,43 @@ export const butterTheme = createTheme(color, {
     OnContainer: '#F2EED3',
   },
 });
+
+export const amoledTheme = createTheme(color, {
+  ...darkThemeData,
+  Background: {
+    Container: '#000000',
+    ContainerHover: '#121212',
+    ContainerActive: '#202020',
+    ContainerLine: '#000000',
+    OnContainer: '#eeeeee',
+  },
+
+  Surface: {
+    Container: '#000000',
+    ContainerHover: '#121212',
+    ContainerActive: '#202020',
+    ContainerLine: '#000000',
+    OnContainer: '#eeeeee',
+  },
+
+  SurfaceVariant: {
+    Container: '#000000',
+    ContainerHover: '#121212',
+    ContainerActive: '#202020',
+    ContainerLine: '#000000',
+    OnContainer: '#eeeeee',
+  },
+
+  Secondary: {
+    Main: '#FFFBDE',
+    MainHover: '#E5E2C8',
+    MainActive: '#D9D5BD',
+    MainLine: '#CCC9B2',
+    OnMain: '#1A1916',
+    Container: '#403F38',
+    ContainerHover: '#4D4B43',
+    ContainerActive: '#59584E',
+    ContainerLine: '#666459',
+    OnContainer: '#F2EED3',
+  },
+});
